@@ -14,7 +14,11 @@
       commonArgs = {
         typstSource = "main.typ";
 
-        fontPaths = [ "${pkgs.font-awesome}/share/fonts/opentype" ];
+        fontPaths = [
+          "${pkgs.font-awesome}/share/fonts/opentype"
+          "${pkgs.iosevka}/share/fonts/truetype"
+          "${pkgs.atkinson-hyperlegible}/share/fonts/opentype"
+        ];
 
         virtualPaths = [ ];
       };
