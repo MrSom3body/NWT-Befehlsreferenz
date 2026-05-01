@@ -1,0 +1,10 @@
+[language-server.tinymist.config.lint]
+enabled = true
+when = "onType"
+
+[language-server.tinymist.config]
+exportPdf = "onType"
+formatterMode = "typstyle"
+formatterPrintWidth = 80
+outputPath = "$root/target/$dir/$name"
+typstExtraArgs = ["main.typ"]
