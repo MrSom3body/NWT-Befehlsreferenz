@@ -1,30 +1,32 @@
-= BGP
+= Border Gateway Protocol (BGP)
+
+*AS konfigurieren*
 ```
 router bgp <AS>
   bgp log-neighbor-changes
   network <NETWORK> mask <SUBMASK>
   neighbor <IP> remote-as <AS>
   neighbor <IP> update-source <INT>
-  neighbor <IP> route-reflector
+  neighbor <IP> route-reflector-client
   neighbor <IP> next-hop-self
   neighbor <IP> default-originate
   neighbor <IP> ebgp-multihop <AS>
 ```
 
-== Peer Groups
+*BGP Peer Groups*
 ```
 router bgp <AS>
   neighbor <PEER-GROUP> peer-group
   neighbor <PEER-GROUP> description <DESCRIPTION>
   neighbor <IP> peer-group <PEER-GROUP>
   neighbor <PEER-GROUP> remote-as <AS>
-  neighbor <PEER-GROUP> update-source <INT>.
+  neighbor <PEER-GROUP> update-source <INT>
   neighbor <PEER-GROUP> version 4
   neighbor <PEER-GROUP> next-hop-self
   neighbor <PEER-GROUP> route-map <MAP-NAME> in/out
 ```
 
-== IPv4
+*BGP-IPv4*
 ```
 router bgp <AS>
   address-family ipv4
@@ -33,7 +35,7 @@ router bgp <AS>
     neighbor <IP> activate
 ```
 
-== IPv6
+*BGP-IPv6*
 ```
 ipv6 unicast-routing
 router bgp <AS>
@@ -43,9 +45,9 @@ router bgp <AS>
     neighbor <IP> activate
 ```
 
-== Communities
+== BGP Communities
 
-=== Customer Config:
+*Customer Config*
 ```
 ip prefix-list <NAME> seq <NUMBER> permit <NETWORK>
 route-map <NAME> permit <NUMBER>
@@ -60,7 +62,7 @@ router bgp <AS>
   neighbor <IP> send-community
 ```
 
-=== ISP Config:
+*ISP Config*
 ```
 router bgp <AS>
   neighbor <IP> send-community
@@ -76,39 +78,40 @@ route-map <NAME> permit <NUMBER>
 ! Explizites Permit-Statement angeben, sonst implizites Deny
 ```
 
-== Manipulation
-=== Route Map
+== BGP Manipulation
+
+*Route-Map*
 ```
 router bgp <AS>
   neighbor <IP> route-map <MAP-NAME> in
   neighbor <IP> route-map <MAP-NAME> out
 ```
 
-=== Local Preference
+*Setting Local Preference*
 ```
 route-map <MAP-NAME> permit <NUMBER>
   set local-preference <VALUE>
 ```
 
-=== AS-Path Prepending
+*AS-Path Prepending*
 ```
 route-map <MAP-NAME> permit <NUMBER>
-set as-path prepend <AS> <AS> <AS>
+  set as-path prepend <AS> <AS> <AS>
 ```
 
-=== Multi-Exit Discriminator (MED)
+*MED (Multi-Exit Discriminator)*
 ```
 route-map <MAP-NAME> permit <NUMBER>
   set metric <VALUE>
 ```
 
-=== Weight Attribute
+*Weight Attribute*
 ```
 route-map <MAP-NAME> permit <NUMBER>
   set weight <VALUE>
 ```
 
-=== BGP-Filter
+*BGP-Filter*
 ```
 router bgp <AS>
   neighbor <IP> prefix-list <NAME> in
@@ -119,21 +122,21 @@ router bgp <AS>
   neighbor <IP> filter-list <AS-PATH-LIST> out
 ```
 
-=== Prefix-List Example
+*Prefix-List Example*
 ```
 ip prefix-list <NAME> seq <NUMBER> permit <NETWORK> <ge/le> <MASKLEN> <ge/le> <MASKLEN>
 ip prefix-list <NAME> seq <NUMBER> deny <NETWORK>
 ip prefix-list preflist permit 192.168.0.0/16 ge 24 le 28
 ```
 
-=== AS Path Filter
+*AS Path Filter*
 ```
 ip as-path access-list <NUMBER> permit/deny <REGEX>
 ip as-path access-list <NUMBER> permit ^<AS>$
 ip as-path access-list <NUMBER> deny .*
 ```
 
-=== Route Map Example
+*Route Map Example*
 ```
 route-map <NAME> permit/deny <NUMBER>
   match <CONDITION>
@@ -142,14 +145,14 @@ route-map <NAME> permit <NUMBER>
 ! Explizites Permit-Statement angeben, sonst implizites Deny
 ```
 
-=== Blacklist
+*Blacklist*
 ```
 route-map <NAME> deny <NUMBER>
   match <CONDITION>
 route-map <NAME> permit <NUMBER>
 ```
 
-=== BGP Confederations
+*BGP Confederations*
 ```
 router bgp <AS>
   bgp confederation identifier <CONFED-AS>
@@ -158,7 +161,7 @@ router bgp <AS>
   neighbor <IP> remote-as <LOCAL-AS>
 ```
 
-=== BGP Multipath
+*BGP Multipath*
 ```
 router bgp <AS>
   maximum-paths <NUMBER> # ebgp
@@ -166,7 +169,7 @@ router bgp <AS>
   maximum-paths ibgp <NUMBER> # ibgp
 ```
 
-=== Soft Reconfiguration
+*Soft Reconfiguration*
 ```
 router bgp <AS>
   neighbor <IP> soft-reconfiguration inbound
@@ -174,19 +177,19 @@ router bgp <AS>
   clear ip bgp <IP> soft out
 ```
 
-=== Route Reflector
+*Route Reflectors*
 ```
 router bgp <AS>
   neighbor <IP> route-reflector-client
 ```
 
-=== Dampening
+*Dampening*
 ```
 router bgp <AS>
   bgp dampening <HALF-LIFE> <REUSE> <SUPPRESS> <MAX-SUPPRESS>
 ```
 
-=== Auto-Summary
+*Auto Summary*
 ```
 router bgp <AS>
   auto-summary

@@ -25,6 +25,11 @@
 
       unstable_typstPackages = [
         {
+          name = "cram-snap";
+          version = "0.2.2";
+          hash = "sha256-N+r21rulsu15irUitPt61sjDOPhWkC8WFiqTixpYCPU=";
+        }
+        {
           name = "codly-languages";
           version = "0.1.10";
           hash = "sha256-rXK4TkLpw5mvGTPPVG9h2XMEJix+BsiR5JIAhURw/n0=";

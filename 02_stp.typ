@@ -1,10 +1,17 @@
-= STP
+= Spanning Tree Protocol (STP)
 
+*STP-Mode setzen*
 ```
 spanning-tree mode <MODE>
-spanning-tree vlan <ID> priority <NUMBER>
+```
 
-! Security
+*Priority einstellen*
+```
+spanning-tree vlan <ID> priority <NUMBER>
+```
+
+*STP-Security*
+```
 spanning-tree portfast
 spanning-tree bpduguard
 ```
