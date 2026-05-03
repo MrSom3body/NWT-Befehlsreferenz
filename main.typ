@@ -57,3 +57,4 @@
 #include "18_linux.typ"
 #include "19_snmp.typ"
 #include "20_syslog.typ"
+#include "21_ansible.typ"
