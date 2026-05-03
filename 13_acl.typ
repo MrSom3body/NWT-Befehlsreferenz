@@ -47,4 +47,6 @@ interface <INT>
   [*Telnet*], [tcp 23], [-],
   [*DNS*], [tcp/udp 53], [-],
   [*BGP*], [tcp 179], [-],
+  [*FTP*], [tcp 20/21], [-],
+  [*TFTP*], [udp 69], [-],
 )

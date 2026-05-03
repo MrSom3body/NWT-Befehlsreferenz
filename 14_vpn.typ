@@ -42,29 +42,28 @@ crypto map <NAME>
 ```
 interface Tunnel0
   ip address <IP> <SUBNET>
-  no ip redirects
   ip mtu 1440
   ip nhrp authentication <SHARED-SECRET>
   ip nhrp map multicast dynamic
   ip nhrp network-id 1
   tunnel source <INT>
   tunnel mode gre multipoint
+  ip nhrp redirect ! Phase 3
 ```
 
 *Spoke Config*
 ```
 interface Tunnel0
   ip address <IP> <SUBNET>
-  no ip redirects
   ip mtu 1440
   ip nhrp authentication <SHARED-SECRET>
-  ip nhrp map multicast dynamic
   ip nhrp map <HUB-IP-TUN> <HUB-IP>
   ip nhrp map multicast <HUB-IP>
   ip nhrp nhs <HUB-IP-TUN>
   ip nhrp network-id 1
   tunnel source <INT>
   tunnel mode gre multipoint
+  ip nhrp shortcut ! Phase 3
 ```
 
 == Front-Door-VRFs

@@ -5,6 +5,7 @@ hostname <NAME>
 no banner *
 no ip domain lookup
 ip domain name <NAME>
+service password-encryption
 
 crypto key gen rsa usa mod 1024
 ip ssh version 2
