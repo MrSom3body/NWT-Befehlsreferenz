@@ -1,0 +1,30 @@
+name: Checks
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+  pull_request:
+  merge_group:
+
+jobs:
+  flake:
+    name: Flake
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v6
+
+      - name: Install Nix
+        uses: nixbuild/nix-quick-install-action@v34
+        with:
+          nix_conf: |
+            accept-flake-config = true
+            always-allow-substitutes = true
+            builders-use-substitutes = true
+            max-jobs = auto
+
+      - name: Check Flake
+        run: nix flake check
