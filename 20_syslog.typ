@@ -21,6 +21,9 @@ logging trap <LVL>
 logging host <IP>
 logging host <IP> transport udp port <PORT>
 logging source-interface <INT>
+logging origin-id string <STRING>
+logging origin-id hostname
+logging origin-id ip <IP>
 ```
 
 *ACL-Logging*
