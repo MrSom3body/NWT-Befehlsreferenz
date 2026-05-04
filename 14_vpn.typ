@@ -66,6 +66,41 @@ interface Tunnel0
   ip nhrp shortcut ! Phase 3
 ```
 
+== DMVPN verschlüsseln mit ikev2
+```
+# ikev2 reingeben
+crypto ikev2 keyring RING
+    peer ALL
+        address 0.0.0.0 0.0.0.0
+        pre-shared-key cisco123!
+    exit
+exit
+
+crypto ikev2 profile PROFILE
+    keyring local RING
+    authentication remote pre-share
+    authentication local pre-share
+    match identity remote address 0.0.0.0
+exit
+
+crypto ipsec profile PROFILE
+    set ikev2-profile PROFILE
+exit
+
+int tunnel0
+    tunnel protection ipsec profile PROFILE
+exit
+
+# DMVPN ip ospf network and priority commands
+! im Tunnel Interface
+ip ospf network point-to-multipoint
+! nur auf Spokes wegen DR participation
+ip ospf priority 0
+```
+
+
+
+
 == Front-Door-VRFs
 
 VRFs bei doppelten Default-Routen. Wenn gesamter Traffic über Hauptstandort laufen soll.
