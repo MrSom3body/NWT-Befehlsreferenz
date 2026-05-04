@@ -1,4 +1,3 @@
-
 = Virtual Private Network (VPN)
 
 == IPsec
@@ -36,8 +35,6 @@ crypto map <NAME> <NUMBER> ipsec-isakmp
 ```
 crypto map <NAME>
 ```
-
-
 
 == Dynamic Multipoint VPN (DMVPN)
 

@@ -1,4 +1,3 @@
-#v(1cm)
 = Access Control Lists (ACLs)
 
 *Standard*
@@ -11,7 +10,8 @@ ip access-list standard <NAME>
 *Extended*
 ```
 ip access-list extended <number|name>
-  <PERMIT|DENY> <PROTOCOL[udp/tcp]> host <IP> host <IP> eq <PORT>
+  <NUMBER> <PERMIT|DENY> <PROTOCOL> <SOURCE> <WILDCARD> <DESTINATION> <WILDCARD> eq <PORT>
+  <PERMIT|DENY> <PROTOCOL> host <IP> host <IP> eq <PORT> [log]
 ```
 
 *CBAC*
