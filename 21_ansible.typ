@@ -7,6 +7,8 @@
 }
 
 = Ansible Backup
+_Verwendet vollqualifizierte Modulnamen wie `ansible.builtin.*` und `cisco.ios.*` -> benötigt eine neuere Ansible-Version._
+
 == Dateistruktur
 ```
 ~/ansible-backup/

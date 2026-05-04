@@ -7,12 +7,14 @@
 }
 
 = Ansible Backup - Simple
+_Verwendet Kurznamen wie `ios_command` und `copy` statt vollqualifizierten Modulnamen -> funktioniert dadurch besser mit älteren Ansible-Versionen als die erweiterte Version._
+
 == Dateistruktur
 ```
 ~/ansible/
 ├── config.txt
 ├── playbook.yml
-├── /inventories/
+└── inventories/
     └── hosts.yml
 ```
 
@@ -38,7 +40,7 @@ ansible-galaxy collection install cisco.ios
 == Playbook (`playbook.yml`)
 ```yaml
 - name: Backup eines Routers
-  hosts: testRouter
+  hosts: <HOSTNAME>
   gather_facts: no
   tasks:
     - name: Get Running-Config
@@ -54,18 +56,18 @@ ansible-galaxy collection install cisco.ios
 
     - name: Upload to FTP Server
       delegate_to: localhost
-      command: curl -T config.txt tftp://192.168.1.1/config.txt #TFTP-Server
+      command: curl -T config.txt tftp://<TFTP-IP>/config.txt
 ```
 
 == Playbook (`hosts.yml`)
 ```yaml
 routers:
   hosts:
-    testRouter:
-      ansible_host: 192.168.1.254 #Router vom dem die Config kopiert wird
+    <HOSTNAME>:
+      ansible_host: <IP>
   vars:
-    ansible_user: cisco
-    ansible_password: cisco
+    ansible_user: <USER>
+    ansible_password: <PASS>
     ansible_connection: network_cli
     ansible_network_os: ios
 ```
