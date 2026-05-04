@@ -58,7 +58,4 @@
 #include "20_syslog.typ"
 #include "22_ansible_simple.typ"
 #include "21_ansible.typ"
-<<<<<<< HEAD
 #include "22_ansible_simple.typ"
-=======
->>>>>>> 3b26883 (del VRF, adapting things, and col space, checking in. OK)

@@ -1,5 +1,4 @@
-#colbreak()
-#colbreak()
+
 = Virtual Private Network (VPN)
 
 == IPsec
