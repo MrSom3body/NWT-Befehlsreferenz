@@ -20,7 +20,7 @@ switchport port-security maximum <NUMBER>
 switchport port-security aging time <NUMBER>
 ```
 
-*DHCP snooping, ip DHCP snooping trust*
+*DHCP snooping*
 ```
 ip dhcp snooping
 ip dhcp snooping vlan <VLANID>
@@ -32,8 +32,9 @@ ip dhcp relay information trust-all
 
 *ARP inspection*
 ```
+! Global aktivieren:
 ip arp inspection vlan 20
-! auf interface wo kein Client
+! Auf interface wo kein Client
 ip arp inspection trust
 ```
 
