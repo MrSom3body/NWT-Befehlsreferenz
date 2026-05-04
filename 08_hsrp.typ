@@ -13,5 +13,8 @@ standby <NUMBER> track <TRACK-NUMBER> decrement <NUMBER>
 ```
 ip sla <NUMBER>
   icmp-echo <IP> source-interface <INT>
+  frequency <FREQUENCY>
 track <TRACK-NUMBER> ip sla <NUMBER> reachability
+
+ip sla schedule <NUMBER> start-time now life forever
 ```
