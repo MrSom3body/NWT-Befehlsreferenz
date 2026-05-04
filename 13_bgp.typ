@@ -62,6 +62,7 @@ router bgp <AS>
   neighbor <IP> send-community
 ```
 
+#colbreak(weak: true)
 *ISP Config*
 ```
 router bgp <AS>
@@ -161,6 +162,7 @@ router bgp <AS>
   neighbor <IP> remote-as <LOCAL-AS>
 ```
 
+#colbreak(weak: true)
 *BGP Multipath*
 ```
 router bgp <AS>

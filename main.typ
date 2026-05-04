@@ -1,8 +1,12 @@
 #import "@preview/cram-snap:0.2.2": *
 #import "@preview/codly:1.3.0": *
 #import "@preview/codly-languages:0.1.10": *
-#show: codly-init.with()
-#codly(languages: codly-languages) // number-format: none)
+
+#set document(
+  title: [NWT – Cheatsheet],
+  description: [Cheatsheet für die NWT sRDP der 5CN],
+  author: "5CN",
+)
 
 #set page(
   paper: "a4",
@@ -15,6 +19,8 @@
 
 #set par(spacing: 0.4em)
 
+#show raw.where(block: true): block.with(breakable: false)
+
 #show heading.where(level: 1): it => {
   v(0.2em)
   line(length: 100%, stroke: stroke(
@@ -25,11 +31,8 @@
   it
 }
 
-#set document(
-  title: [NWT – Cheatsheet],
-  description: [Cheatsheet für die NWT sRDP der 5CN],
-  author: "5CN",
-)
+#show: codly-init.with()
+#codly(languages: codly-languages) // number-format: none)
 
 #show: cram-snap.with(
   title: [*NWT – Cheatsheet*],
@@ -44,10 +47,12 @@
 #include "05_etherchannel.typ"
 #include "06_portsecurity.typ"
 #include "07_dhcp.typ"
+#colbreak(weak: true)
 #include "08_nat.typ"
 #include "09_hsrp.typ"
 #include "10_rip.typ"
 #include "11_ospf.typ"
+#colbreak(weak: true)
 #include "12_authentication.typ"
 #include "13_bgp.typ"
 #include "14_acl.typ"
@@ -57,7 +62,6 @@
 #include "19_linux.typ"
 #include "20_snmp.typ"
 #include "21_syslog.typ"
-#colbreak()
 #include "22_ansible.typ"
-#colbreak()
+#colbreak(weak: true)
 #include "23_ansible_simple.typ"

@@ -36,6 +36,7 @@ crypto map <NAME> <NUMBER> ipsec-isakmp
 crypto map <NAME>
 ```
 
+#colbreak(weak: true)
 == Dynamic Multipoint VPN (DMVPN)
 
 *Hub Config*

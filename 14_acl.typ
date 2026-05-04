@@ -21,6 +21,7 @@ interface <INT>
   ip inspect <NAME> out
 ```
 
+#colbreak(weak: true)
 *Erlauben von Protokollen*
 #table(
   columns: 3,

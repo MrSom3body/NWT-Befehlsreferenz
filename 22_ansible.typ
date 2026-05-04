@@ -58,7 +58,7 @@ ansible-galaxy collection install cisco.ios
 ```
 
 == Test, ob Cisco Node mit Collection funktioniert
-```bash
+```
 ansible <HOSTNAME> -i hosts -m cisco.ios.ios_facts
 ```
 
