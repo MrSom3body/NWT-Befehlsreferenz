@@ -6,7 +6,6 @@
   it
 }
 
-#colbreak()
 
 = Ansible Backup - für mehrere Geräte ideal -
 
