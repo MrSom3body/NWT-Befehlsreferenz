@@ -1,3 +1,4 @@
+#colbreak()
 = Border Gateway Protocol (BGP)
 
 *AS konfigurieren*

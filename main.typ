@@ -49,13 +49,16 @@
 #include "10_ospf.typ"
 #include "11_authentication.typ"
 #include "12_bgp.typ"
-#include "13_acl.typ"
 #include "14_vpn.typ"
+#include "13_acl.typ"
 #include "15_zbf.typ"
-#include "16_vrf.typ"
 #include "17_show.typ"
 #include "18_linux.typ"
 #include "19_snmp.typ"
 #include "20_syslog.typ"
-#include "21_ansible.typ"
 #include "22_ansible_simple.typ"
+#include "21_ansible.typ"
+<<<<<<< HEAD
+#include "22_ansible_simple.typ"
+=======
+>>>>>>> 3b26883 (del VRF, adapting things, and col space, checking in. OK)

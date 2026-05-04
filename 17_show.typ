@@ -87,12 +87,6 @@ show ip bgp ipv4
 show ip bgp ipv6
 ```
 
-*VRF*
-```
-show ip route vrf CUSTOMER_A
-show vrf
-```
-
 *SNMP*
 ```
 show snmp

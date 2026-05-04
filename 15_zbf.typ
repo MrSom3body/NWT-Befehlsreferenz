@@ -1,16 +1,21 @@
+#colbreak()
+
 = Zone-Based Firewall
 
 *Anlegen einer Class-Map*
+
 ```
+!davor ACL anlegen je nach Anforderungen
 class-map type inspect match-any <CLASSMAP-NAME>
   match access-group name <ACCESS-LIST>
 ```
 
 *Erstellen einer Policy-Map unter Verwendung einer Class-Map*
 ```
+!inspect = session-based; pass = nur in eine Richtung
 policy-map type inspect <POLICYMAP-NAME>
   class type inspect <CLASSMAP-NAME>
-    pass
+    [pass/inspect]
   class class-default
     drop
 ```

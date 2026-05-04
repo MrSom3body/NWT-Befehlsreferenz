@@ -1,3 +1,5 @@
+#colbreak()
+#colbreak()
 = Virtual Private Network (VPN)
 
 == IPsec
@@ -35,6 +37,8 @@ crypto map <NAME> <NUMBER> ipsec-isakmp
 ```
 crypto map <NAME>
 ```
+
+
 
 == Dynamic Multipoint VPN (DMVPN)
 
@@ -96,36 +100,4 @@ exit
 ip ospf network point-to-multipoint
 ! nur auf Spokes wegen DR participation
 ip ospf priority 0
-```
-
-
-
-
-== Front-Door-VRFs
-
-VRFs bei doppelten Default-Routen. Wenn gesamter Traffic über Hauptstandort laufen soll.
-
-```
-! Anlegen eines VRFs
-vrf definition FVRF
-  address-family ipv4 unicast
-
-! VRF auf Interface Richtung ISP anwenden
-interface <INT>
-  vrf forwarding FVRF
-
-! Default-Route in VRF Richtung ISP anlegen
-ip route vrf FVRF 0.0.0.0 0.0.0.0 1.1.1.254
-
-! VRF auf IKEv2 Profile anwenden
-crypto ikev2 profile IKEV2_PROFILE
-  match fvrf FVRF
-
-! VRF für Tunnelaufbau verwenden (Hub)
-interface Virtual-Template 1 type tunnel
-  tunnel vrf FVRF
-
-! VRF für Tunnelaufbau verwenden (Spoke)
-interface Tunnel 0
-  tunnel vrf FVRF
 ```

@@ -6,10 +6,8 @@
   it
 }
 
-= Ansible Backup - Simple
-_Verwendet Kurznamen wie `ios_command` und `copy` statt vollqualifizierten Modulnamen -> funktioniert dadurch besser mit älteren Ansible-Versionen als die erweiterte Version._
-
-== Dateistruktur
+= Ansible Backup - Simple für ein Gerät
+== 1) Dateistruktur
 ```
 ~/ansible/
 ├── config.txt
@@ -18,7 +16,7 @@ _Verwendet Kurznamen wie `ios_command` und `copy` statt vollqualifizierten Modul
     └── hosts.yml
 ```
 
-== Netzwerk Konfiguration
+== 2) Netzwerk Konfiguration
 ```
 # /etc/network/interfaces oder einfach Rechtsklick aufs Device > Configure > Unterstes Edit
 auto eth0
@@ -32,12 +30,17 @@ iface eth0 inet static
   up echo nameserver <NS> > /etc/resolv.conf
 ```
 
-== Cisco Collection installieren (sollte aber schon vorinstalliert sein)
+== 3) Cisco Collection installieren (sollte aber schon vorinstalliert sein)
 ```bash
 ansible-galaxy collection install cisco.ios
 ```
 
-== Playbook (`playbook.yml`)
+== Test, ob Cisco Node mit Collection funktioniert
+```ini
+ansible <hostname> -i hosts -m cisco.ios.ios_facts
+```
+
+== 4) Playbook (`playbook.yml`)
 ```yaml
 - name: Backup eines Routers
   hosts: <HOSTNAME>
@@ -59,7 +62,7 @@ ansible-galaxy collection install cisco.ios
       command: curl -T config.txt tftp://<TFTP-IP>/config.txt
 ```
 
-== Playbook (`hosts.yml`)
+== 5) Playbook (`hosts.yml`)
 ```yaml
 routers:
   hosts:
@@ -72,7 +75,7 @@ routers:
     ansible_network_os: ios
 ```
 
-== Playbook ausführen
+== 6) Playbook ausführen
 ```bash
 ansible-playbook -i inventories/hosts.yml playbook.yml
 ```

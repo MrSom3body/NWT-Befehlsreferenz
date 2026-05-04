@@ -6,19 +6,12 @@
   it
 }
 
-= Ansible Backup
-_Verwendet vollqualifizierte Modulnamen wie `ansible.builtin.*` und `cisco.ios.*` -> benötigt eine neuere Ansible-Version._
+#colbreak()
 
-== Dateistruktur
-```
-~/ansible-backup/
-├── ansible.cfg
-├── hosts.ini
-├── backup.yml
-└── backups/
-```
+= Ansible Backup - für mehrere Geräte ideal -
 
-== Netzwerk Konfiguration
+== 1) Netzwerk Konfiguration der Appliance
+
 ```
 # /etc/network/interfaces
 auto eth0
@@ -32,7 +25,23 @@ iface eth0 inet static
   up echo nameserver <NS> > /etc/resolv.conf
 ```
 
-== `ansible.cfg`
+== 2) SSH-Test
+```
+!Zwischentest auf Gerät:
+ssh cisco@Adresse -> wenns geht: OK, weiter:
+```
+
+== Dateistruktur
+```
+~/ansible-backup/
+├── ansible.cfg
+├── hosts.ini
+├── backup.yml
+└── backups/
+```
+
+
+== 3) `ansible.cfg`
 ```ini
 [defaults]
 hostfile = ./hosts.ini
@@ -40,21 +49,29 @@ host_key_checking = false
 timeout = 86400
 ```
 
-== `hosts.ini`
+== 4) `hosts.ini`
 ```ini
 [cisco]
 <HOSTNAME> ansible_host=<IP>
+<evtl. weitere>
 
+!Cred für Anmeldung via SSH
+!Gruppen Var: gilt für jeden Host oben
 [cisco:vars]
 ansible_user=<USER>
 ansible_password=<PASS>
 ansible_connection=network_cli
 ansible_network_os=ios
 ```
-
-== Cisco Collection installieren
+<
+== 5) Cisco Collection installieren
 ```bash
 ansible-galaxy collection install cisco.ios
+```
+
+== 6) Test, ob Cisco Node mit Collection funktioniert
+```ini
+ansible <hostname> -i hosts -m cisco.ios.ios_facts
 ```
 
 == Playbook (`backup.yml`)
