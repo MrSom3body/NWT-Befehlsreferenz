@@ -18,3 +18,13 @@ ip dhcp excluded-address <IP>
 ```
 ip helper-address <IP>
 ```
+
+*DHCP Identifier*
+```
+ip dhcp pool test #Um MAC von Client herauszufinden
+debug ip dhcp server packets
+no ip dhcp pool test
+ip dhcp pool <NAME>
+    host <IP> <SM>
+    client-identifier <CLIENT-ID>
+```
