@@ -10,7 +10,7 @@ class-map type inspect match-any <CLASSMAP-NAME>
 ```
 policy-map type inspect <POLICYMAP-NAME>
   class type inspect <CLASSMAP-NAME>
-    inspect
+    pass
   class class-default
     drop
 ```
