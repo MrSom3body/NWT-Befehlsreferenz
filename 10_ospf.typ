@@ -10,8 +10,9 @@ passive-interface <INT>
 
 *Priority konfigurieren*
 ```
-priority <NUMBER>
-ip ospf priority <NUMBER>
+int <OSPF-INIT>
+    priority <NUMBER>
+    ip ospf priority <NUMBER>
 ```
 
 *Authentication*
