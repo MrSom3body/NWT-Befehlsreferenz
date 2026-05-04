@@ -84,7 +84,7 @@ ansible <HOSTNAME> -i hosts -m cisco.ios.ios_facts
         backup_timestamp: "{{ lookup('pipe', 'date +%Y%m%d-%H%M') }}"
 
     - name: Running Config auslesen
-      cisco.ios.ios_command: # oder nur ios_command
+      ios_command:
         commands:
           - show running-config
       register: config_output
